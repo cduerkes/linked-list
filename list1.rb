@@ -21,7 +21,8 @@ node1 = LinkedListNode.new(37)
 node2 = LinkedListNode.new(99, node1)
 node3 = LinkedListNode.new(12, node2)
 
-node3.print_values
+puts "Print sample linked list:"
+puts "#{node3.print_values}"
 
 class Stack
   attr_accessor :data
@@ -59,7 +60,27 @@ class Stack
 end
 
 stack1 = Stack.new
+puts "Push items onto the inital stack:"
 stack1.push(10)
 stack1.push(20)
 stack1.push(30)
+
+puts ""
+puts "Pop all items:"
+puts stack1.pop
+puts stack1.pop
+puts stack1.pop
+puts stack1.pop
+
+puts ""
+puts "Push items back onto stack:"
+stack1.push(10)
+stack1.push(20)
+stack1.push(30)
+
+puts ""
+puts "Push items onto the reversed stack:"
 puts stack1.reverse_list
+
+# print_values method only works in push method apparently because 
+# that is where LinkedListNode object is instantiated in Stack class
