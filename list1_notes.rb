@@ -6,6 +6,17 @@ class LinkedListNode
     @next_node = next_node
   end
 
+# copied from lesson, returns NoMethodError
+#  def print_values(list_node)
+#    if list_node
+#      print "#{list_node.value} --> "
+#      print_values(list_node.next_node)
+#    else
+#      print "nil\n"
+#      return
+#    end
+#  end
+
   def print_values
     print "#{self.value} --> "
     if self.next_node
@@ -21,7 +32,14 @@ node1 = LinkedListNode.new(37)
 node2 = LinkedListNode.new(99, node1)
 node3 = LinkedListNode.new(12, node2)
 
+# print_values(node3)
+# list1.rb:23:in `<class:LinkedListNode>': undefined method `print_values' 
+# for LinkedListNode:Class (NoMethodError)
+
 node3.print_values
+
+# First implement a Stack using only the data type of a LinkedList. Do not use an Array. 
+# Fill in the blanks with the following code:
 
 class Stack
   attr_accessor :data
@@ -37,7 +55,9 @@ class Stack
     self.data.print_values
   end
 
-  # Pop an item off the stack and return the value to the user
+  # Pop an item off the stack.
+  # Remove the last item that was pushed onto the
+  # stack and return the value to the user
   def pop
     if self.data
       popped = self.data.value
@@ -49,12 +69,17 @@ class Stack
   end
 
   def reverse_list
+    # ADD CODE HERE
     rev_stack = Stack.new
 
     while self.data
       rev_stack.push(self.pop)
+  #    list = list.next_node
     end
     return rev_stack
+    # ADD CODE HERE
+
+
   end
 end
 
@@ -62,4 +87,14 @@ stack1 = Stack.new
 stack1.push(10)
 stack1.push(20)
 stack1.push(30)
-puts stack1.reverse_list
+stack1.reverse_list
+# puts stack1.pop
+# puts stack1.pop
+# puts stack1.pop
+# puts stack1.pop
+
+#Q1: 
+# => stack1.print_values returns (NoMethodError?), 
+# => but print_values method is available inside push
+# => and pop method. 
+
