@@ -25,24 +25,24 @@ puts "Print sample linked list:"
 puts "#{node3.print_values}"
 
 class Stack
-  attr_accessor :data
+  attr_accessor :top_node
 
   def initialize
-    @data = nil
+    @top_node = nil
   end
 
   # Push a value onto the stack
   def push(value)
-    self.data = LinkedListNode.new(value, self.data)
+    self.top_node = LinkedListNode.new(value, self.top_node)
 
-    self.data.print_values
+    self.top_node.print_values
   end
 
   # Pop an item off the stack and return the value to the user
   def pop
-    if self.data
-      popped = self.data.value
-      self.data = self.data.next_node
+    if self.top_node
+      popped = self.top_node.value
+      self.top_node = self.top_node.next_node
       return popped
     else 
       return "nil\n"
@@ -52,7 +52,7 @@ class Stack
   def reverse_list
     rev_stack = Stack.new
 
-    while self.data
+    while self.top_node
       rev_stack.push(self.pop)
     end
     return rev_stack
@@ -79,7 +79,7 @@ stack1.push(20)
 stack1.push(30)
 
 puts ""
-puts "Push items onto the reversed stack:"
+puts "Push items in reverse order onto a new stack (rev_stack):"
 puts stack1.reverse_list
 
 # print_values method only works in push method apparently because 
